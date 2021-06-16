@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return
+      FutureBuilder(
         future: Future.delayed(Duration(seconds: 3)),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -46,10 +47,6 @@ class _Container extends State<Container> {
       body: HomeFragment(),
     ),
     Text(
-      'Index 1: Explore',
-      style: optionStyle,
-    ),
-    Text(
       'Index 2: Mail',
       style: optionStyle,
     )
@@ -71,10 +68,9 @@ class _Container extends State<Container> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined), label: 'Home'),
-          BottomNavigationBarItem(
               icon: Icon(Icons.explore_outlined), label: 'Explore'),
-          BottomNavigationBarItem(icon: Icon(Icons.mail_outline), label: 'Mail')
+          BottomNavigationBarItem(
+              icon: Icon(Icons.mail_outline), label: 'Mail')
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue.shade400,

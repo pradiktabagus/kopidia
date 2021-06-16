@@ -11,36 +11,48 @@ class HomeFragment extends StatelessWidget {
         return InkWell(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return DetailScreen();
+              return DetailScreen(kopi: kopi,);
             }));
           },
-          child: Card(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Image.asset(kopi.image)
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                         Text(
-                            kopi.name,
-                            style: TextStyle(fontSize: 16.0),
+          child: Container(
+            height: 150,
+            child: Card(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                      flex: 1,
+                      child: Image.network(kopi.image)
+                  ),
+                  Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(
+                              kopi.name,
+                              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                kopi.deskripsi,
+                                style: TextStyle(fontSize: 14.0),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 4,
+                              ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      )
                   )
-                )
-              ],
+                ],
+              ),
             ),
-          ),
+          )
         );
       },
       itemCount: KopiList.length,
